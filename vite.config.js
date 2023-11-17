@@ -9,15 +9,15 @@ export default defineConfig({
         lib: {
             entry: resolve(__dirname, "src/index.js"),
             name: "VueFormIdable",
-            fileName: "vue-form-idable"
+            fileName: "vue-form-idable",
         },
         rollupOptions: {
             external: ["vue"],
             output: {
                 globals: {
-                    vue: "Vue"
-                }
-            }
-        }
-    }
+                    vue: "Vue",
+                },
+            },
+        },
+    },
 });
