@@ -3,7 +3,7 @@ import InputText from "./components/InputText.vue";
 </script>
 
 <template>
-  <InputText placeholder="test" />
+  <InputText label="Prénom" placeholder="test"/>
 </template>
 
 <style scoped></style>
