@@ -8,8 +8,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, "src/index.js"),
-            name: "VueFormIdable",
-            fileName: "vue-form-idable",
+            name: "Vue3FormIdable",
+            fileName: "vue3-form-idable",
         },
         rollupOptions: {
             external: ["vue"],

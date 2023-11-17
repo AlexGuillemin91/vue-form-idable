@@ -1,16 +1,16 @@
 {
-  "name": "vue-form-idable",
+  "name": "vue3-form-idable",
   "version": "0.1.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "dist/vue-form-idable.umd.cjs",
-  "module": "dist/vue-form-idable.js",
+  "main": "dist/vue3-form-idable.umd.cjs",
+  "module": "dist/vue3-form-idable.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-form-idable.js",
-      "require": "./dist/vue-form-idable.umd.cjs"
+      "import": "./dist/vue3-form-idable.js",
+      "require": "./dist/vue3-form-idable.umd.cjs"
     }
   },
   "scripts": {
