@@ -6,6 +6,4 @@ import InputText from "./components/InputText.vue";
   <InputText label="Prénom" placeholder="test"/>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
