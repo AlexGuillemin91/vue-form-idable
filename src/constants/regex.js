@@ -1,0 +1,12 @@
+export const REGEX_STRONG_PASSWORD = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{12,32})");
+export const REGEX_MEDIUM_PASSWORD = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,32})");
+export const REGEX_EMAIL = new RegExp("^[a-z0-9A-Z._%+-]+@[a-z0-9A-Z.-]+\\.[a-zA-Z]{2,}$");
+export const REGEX_PHONE_NUMBER = new RegExp("^([+]{0,1})([0-9 ]{7,50})$");
+export const REGEX_COLOR = new RegExp("^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$");
+export const REGEX_EMPTY = new RegExp("^\\s*$");
+export const REGEX_SPACES = new RegExp("\\s");
+export const REGEX_LETTERS = new RegExp("[a-zA-Z]");
+export const REGEX_NUMBERS = new RegExp("[0-9]");
+export const REGEX_SPECIALS = new RegExp("[^0-9^a-z^A-Z\\séèà]");
+export const REGEX_URL = new RegExp('^(https?:\\/\\/)?' + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + '((\\d{1,3}\\.){3}\\d{1,3}))' + '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + '(\\?[;&a-z\\d%_.~+=-]*)?' + '(\\#[-a-z\\d_]*)?$', 'i');
+export const REGEX_SIRET = new RegExp('^[0-9]{14}$');
