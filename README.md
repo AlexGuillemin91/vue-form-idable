@@ -1,7 +1,10 @@
-# Vue 3 + Vite
+# [Vue 3 FormIdable](https://www.npmjs.com/package/vue3-form-idable)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Vue 3 FormIdable is a Vue 3 component library for creating forms with ease.
+Our goal is to make it as easy as possible to create forms with validation and components that can be easily customized.
 
-## Recommended IDE Setup
+## Installation
 
--   [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Clone the repo on your local machine using `git clone`
+- Run `npm install` to install all dependencies
+- Run `npm run dev` to start the development server or `npm run build` to build the library
