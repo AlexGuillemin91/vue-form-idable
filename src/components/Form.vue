@@ -1,10 +1,33 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <slot />
+    <slot></slot>
   </form>
 </template>
 
-<script setup>
+<!-- <script>
+export default {
+  props: {
+    refs: { type: Object, default: {} },
+  },
+  methods: {
+    validate() {
+      const checks = [];
+      for (const r in this.refs) {
+        try {
+          checks.push(this.refs[r].validate());
+        } catch { }
+      }
+      return !checks.includes(false);
+    },
+    onSubmit(event) {
+      event.preventDefault();
+      this.validate() ? this.$emit("validated") : null;
+    },
+  }
+};
+</script> -->
+
+<script>
 import { ref } from 'vue';
 
 const formRefs = ref([]);
@@ -28,8 +51,11 @@ const validateForm = () => {
 const onSubmit = () => {
   if (validateForm()) {
     console.log('Formulaire soumis avec succès.');
+    this.$emit('submit');
   } else {
-    console.log('Le formulaire contient des erreurs.');
+    console.log('Le formulaire contient des erreurs. Annulation de la soumission du formulaire.');
   }
 };
+
+export { addRef, onSubmit };
 </script>

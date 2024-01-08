@@ -1,14 +1,16 @@
 <template>
   <InputLayout :label="label" :message="message" :error="error" :showErrors="showErrors" :required="required"
-          @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
-      <input ref="input" type="text" :value="modelValue" :placeholder="placeholder" :disabled="disabled" @input="$emit('update:model-value', $event.target.value)"
-              @change="handleChange" @blur="handleBlur"/>
+    @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
+    <input ref="input" type="text" :value="modelValue" :placeholder="placeholder" :disabled="disabled"
+        @input="handleInput"
+        @blur="validate()"/>
   </InputLayout>
 </template>
 
 <script>
 import InputLayout from './InputLayout.vue';
 import { REGEX_EMPTY } from '../constants/regex';
+
 export default {
   props: {
     label: { type: String, default: "" },
@@ -37,36 +39,36 @@ export default {
     },
   },
   methods: {
-    handleChange(event) {
-      this.$emit('update:model-value', event.target.value);
-      this.checkIsValidated();
+    handleInput(event) {
+      this.$emit('update:modelValue', event.target.value);
     },
-    handleBlur(event) {
-      this.$emit('blur', event.target.value);
-    },
-    checkIsValidated() {
+    validate() {
+      console.log('Vérification des erreurs');
       this.error = null;
-      console.log('check for errors');
-      // Required rule
+      console.log('label : ',this.label);
+      console.log('requis : ',this.required);
+      console.log('vide : ', this.isEmpty);
+
+      // Règle requise
       if (this.required && this.isEmpty) {
-        console.log(this.isEmpty);
-        console.log("mais frerot stp");
-        this.error = "Ce champ est requis"
+        this.error = 'Ce champ est requis';
         return false;
       }
-      // Min rule
+      console.log('erreur : ', this.error);
+      // Règle de min
       if (this.min && this.modelValue.length < this.min) {
-        this.error = "Ce champ doit contenir au moins " + this.min + " caractères"
-        return false
+        this.error = `Ce champ doit contenir au moins ${this.min} caractères`;
+        return false;
       }
-      // Max rule
+      // Règle de max
       if (this.max && this.modelValue.length > this.max) {
-        this.error = "Ce champ doit contenir au maximum " + this.max + " caractères"
-        return false
+        this.error = `Ce champ doit contenir au maximum ${this.max} caractères`;
+        return false;
       }
 
       return true;
     },
   },
-}
+  };
 </script>
+
