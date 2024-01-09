@@ -1,16 +1,16 @@
 <template>
-  <form @submit.prevent="onSubmit">
+  <form ref="form" @submit.prevent="onSubmit">
     <slot></slot>
   </form>
 </template>
 
-<!-- <script>
+<script>
 export default {
   props: {
     refs: { type: Object, default: {} },
   },
   methods: {
-    validate() {
+    validateForm() {
       const checks = [];
       for (const r in this.refs) {
         try {
@@ -21,24 +21,26 @@ export default {
     },
     onSubmit(event) {
       event.preventDefault();
-      this.validate() ? this.$emit("validated") : null;
+      console.log('coucou');
+      this.validateForm() ? this.$emit("validated") : null;
     },
   }
 };
-</script> -->
+</script>
 
-<script>
+<!-- <script>
 import { ref } from 'vue';
 
-const formRefs = ref([]);
+const inputForm = ref([]);
 
 const addRef = (refInstance) => {
-  formRefs.value.push(refInstance);
+  inputForm.value.push(refInstance);
 };
 
 const validateForm = () => {
   const checks = [];
-  formRefs.value.forEach((input) => {
+  console.log(input.value);
+  inputForm.value.forEach((input) => {
     checks.push(input.validate());
 
     input.$children.forEach((inp) => {
@@ -48,7 +50,9 @@ const validateForm = () => {
   return !checks.includes(false);
 };
 
-const onSubmit = () => {
+const onSubmit = (event) => {
+  event.preventDefault();
+  console.log('coucou');
   if (validateForm()) {
     console.log('Formulaire soumis avec succès.');
     this.$emit('submit');
@@ -58,4 +62,4 @@ const onSubmit = () => {
 };
 
 export { addRef, onSubmit };
-</script>
+</script> -->

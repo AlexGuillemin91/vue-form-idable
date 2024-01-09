@@ -4,10 +4,10 @@ import Form from "./components/Form.vue";
 </script>
 
 <template>
-  <Form @submit="login" :formError ="formError">
+  <Form @validated="login" :formError ="formError">
     <InputText v-model="form.nom" label="Nom" placeholder="test" :required="true"/>
     <InputText v-model="form.prenom" label="Prénom" placeholder="test" />
-    <button type="submit">Valider</button>
+    <button type="submit">Envoyer</button>
   </Form>
 </template>
 
@@ -23,10 +23,6 @@ import Form from "./components/Form.vue";
     };
   },
     methods: {
-    handleBlur(value) {
-      // Effectuez votre validation ici en utilisant la valeur de l'input (value)
-      console.log('Blur event with value:', value);
-    },
     async login() {
       // Your form submission logic goes here
       try {

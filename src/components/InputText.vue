@@ -1,9 +1,8 @@
 <template>
   <InputLayout :label="label" :message="message" :error="error" :showErrors="showErrors" :required="required"
     @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
-    <input ref="input" type="text" :value="modelValue" :placeholder="placeholder" :disabled="disabled"
-        @input="handleInput"
-        @blur="validate()"/>
+    <input ref="inputForm" type="text" :value="modelValue" :placeholder="placeholder" :disabled="disabled"
+      @input="$emit('update:model-value', $event.target.value)" @blur="validate()" />
   </InputLayout>
 </template>
 
@@ -33,33 +32,30 @@ export default {
   },
   computed: {
     isEmpty() {
-      console.log(this.modelValue);
-      console.log(REGEX_EMPTY.test(this.modelValue));
       return REGEX_EMPTY.test(this.modelValue);
     },
+    isValidated() {
+      return this.validate()
+    }
   },
   methods: {
-    handleInput(event) {
-      this.$emit('update:modelValue', event.target.value);
-    },
     validate() {
-      console.log('Vérification des erreurs');
       this.error = null;
-      console.log('label : ',this.label);
-      console.log('requis : ',this.required);
-      console.log('vide : ', this.isEmpty);
+      console.log('validate', this.modelValue);
+      console.log('label', this.label);
 
       // Règle requise
       if (this.required && this.isEmpty) {
         this.error = 'Ce champ est requis';
         return false;
       }
-      console.log('erreur : ', this.error);
+
       // Règle de min
       if (this.min && this.modelValue.length < this.min) {
         this.error = `Ce champ doit contenir au moins ${this.min} caractères`;
         return false;
       }
+
       // Règle de max
       if (this.max && this.modelValue.length > this.max) {
         this.error = `Ce champ doit contenir au maximum ${this.max} caractères`;
@@ -67,8 +63,7 @@ export default {
       }
 
       return true;
-    },
+    }
   },
-  };
+};
 </script>
-

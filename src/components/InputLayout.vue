@@ -18,7 +18,7 @@
     </div>
 
     <!-- Error -->
-    <p v-if="error && showErrors">
+    <p v-if="error && showErrors" style="color: red">
       {{ error }}
     </p>
   </div>
