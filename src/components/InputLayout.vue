@@ -1,24 +1,24 @@
 <template>
-  <div @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
+  <div @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')">
     <!-- Message -->
     <p v-if="message">{{ message }}</p>
 
     <!-- Label -->
     <label>
       <p>
-        {{ label }}
+        {{ label }} <span style="color: red;" v-if="required == true">*</span>
       </p>
     </label>
     <!-- Box input -->
     <div>
-      <div>
+      <div class="layout">
         <!-- Real input -->
         <slot />
       </div>
     </div>
 
     <!-- Error -->
-    <p v-if="error && showErrors">
+    <p v-if="error && showErrors" style="color: red">
       {{ error }}
     </p>
   </div>
@@ -38,3 +38,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+/* target the input inside to modify the input */
+  .layout ::v-deep(input) {
+    border: 1px solid black;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: transparent;
+    border-radius: 5px;
+  }
+</style>
