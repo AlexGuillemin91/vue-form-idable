@@ -1,12 +1,15 @@
 <script setup>
 import InputText from "./components/InputText.vue";
+import InputEmail from "./components/InputEmail.vue";
+import InputPassword from "./components/InputPassword.vue";
 import Form from "./components/Form.vue";
 </script>
 
 <template>
   <Form @validated="login" :formError ="formError">
     <InputText v-model="form.nom" label="Nom" placeholder="test" :required="true"/>
-    <InputText v-model="form.prenom" label="Prénom" placeholder="test" />
+    <InputEmail v-model="form.email" label="Email" placeholder="email@email.fr" />
+    <InputPassword v-model="form.password" label="Mot de passe" />
     <button type="submit">Envoyer</button>
   </Form>
 </template>
@@ -17,7 +20,8 @@ import Form from "./components/Form.vue";
     return {
       form: {
         nom: '',
-        prenom: '',
+        email: '',
+        password: '',
       },
       formError: null
     };
