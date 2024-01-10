@@ -1,7 +1,7 @@
 <template>
   <InputLayout :label="label" :message="message" :error="error" :showErrors="showErrors" :required="required"
     @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
-    <input ref="inputForm" type="text" :value="modelValue" :placeholder="placeholder" :disabled="disabled" :required="required"
+    <input ref="inputForm" type="password" :value="modelValue" :placeholder="placeholder" :disabled="disabled" :required="required"
       @input="$emit('update:model-value', $event.target.value)" @blur="validate()" />
   </InputLayout>
 </template>
@@ -16,7 +16,7 @@ export default {
     modelValue: { default: "" },
     min: { type: Number, default: null },
     max: { type: Number, default: 256 },
-    required: { type: Boolean, default: false },
+    required: { type: Boolean, default: true },
     placeholder: { type: String, default: "" },
     disabled: { type: Boolean, default: false },
     message: { type: String, default: "" },
@@ -36,7 +36,10 @@ export default {
     },
     isValidated() {
       return this.validate()
-    }
+    },
+    hasNoMaj() {
+      return !/[A-Z]/.test(this.modelValue);
+    },
   },
   methods: {
     validate() {
@@ -51,8 +54,13 @@ export default {
       }
 
       // Règle de min
-      if (this.min && this.modelValue.length < this.min) {
-        this.error = `Ce champ doit contenir au moins ${this.min} caractères`;
+      if (this.modelValue.length < 6) {
+        this.error = `Ce champ doit contenir au moins 6 caractères`;
+        return false;
+      }
+
+      if (this.hasNoMaj) {
+        this.error = `Ce champ doit contenir au moins une majuscule`;
         return false;
       }
 
