@@ -9,7 +9,6 @@ Our goal is to make it as easy as possible to create forms with validation and c
 - Run `npm install` to install all dependencies
 - Run `npm run dev` to start the development server or `npm run build` to build the library
 
-
 ## Example
 
 Here is a simple example of how to use the form component with only en email and password field.
