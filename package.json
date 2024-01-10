@@ -5,8 +5,7 @@
   "files": [
     "dist"
   ],
-  "main": "dist/vue3-form-idable.umd.cjs",
-  "module": "dist/vue3-form-idable.js",
+  "main": "src/index.js",
   "exports": {
     ".": {
       "import": "./dist/vue3-form-idable.js",
