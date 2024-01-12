@@ -10,7 +10,8 @@
     ".": {
       "import": "./dist/vue3-form-idable.js",
       "require": "./dist/vue3-form-idable.umd.cjs"
-    }
+    },
+    "./style": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",
