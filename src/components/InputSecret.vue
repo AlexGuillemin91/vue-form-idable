@@ -2,7 +2,7 @@
   <InputLayout :label="label" :message="message" :error="error" :showErrors="showErrors" :required="required"
     @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
     <input ref="inputForm" type="password" :value="modelValue" :placeholder="placeholder" :disabled="disabled"
-      :required="required" @input="$emit('update:model-value', $event.target.value)" @blur="validate()" />
+      @input="$emit('update:model-value', $event.target.value)" @blur="validate()" />
   </InputLayout>
 </template>
 
@@ -41,8 +41,6 @@ export default {
   methods: {
     validate() {
       this.error = null;
-      console.log('validate', this.modelValue);
-      console.log('label', this.label);
 
       // Règle requise
       if (this.required && this.isEmpty) {

@@ -3,13 +3,15 @@ import InputText from "./components/InputText.vue";
 import InputEmail from "./components/InputEmail.vue";
 import InputPassword from "./components/InputPassword.vue";
 import Form from "./components/Form.vue";
+import InputTextArea from "./components/InputTextArea.vue";
 </script>
 
 <template>
-  <Form @validated="login" :formError ="formError">
-    <InputText v-model="form.nom" label="Nom" placeholder="test" :required="true"/>
-    <InputEmail v-model="form.email" label="Email" placeholder="email@email.fr" />
-    <InputPassword v-model="form.password" label="Mot de passe" />
+  <Form @validated="login" :refs="refs" :formError="formError">
+    <InputText ref="1" v-model="form.nom" label="Nom" placeholder="test" :required="true"/>
+    <InputEmail ref="2" v-model="form.email" label="Email" placeholder="email@email.fr" />
+    <InputPassword ref="3" v-model="form.password" label="Mot de passe" />
+    <InputTextArea ref="4" v-model="form.message" label="Message" :required="true"/>  
     <button type="submit">Envoyer</button>
   </Form>
 </template>
@@ -22,9 +24,14 @@ import Form from "./components/Form.vue";
         nom: '',
         email: '',
         password: '',
+        message: '',
       },
+      refs: null,
       formError: null
     };
+  },
+  mounted() {
+    this.refs = this.$refs;
   },
     methods: {
     async login() {

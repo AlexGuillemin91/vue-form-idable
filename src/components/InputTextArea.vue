@@ -1,7 +1,7 @@
 <template>
   <InputLayout :label="label" :message="message" :error="error" :showErrors="showErrors" :required="required"
     @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')" @click="$emit('click')">
-    <input type="email" :value="modelValue" :placeholder="placeholder" :disabled="disabled" :required="required"
+    <textarea :value="modelValue" :placeholder="placeholder" :disabled="disabled"
       @input="$emit('update:model-value', $event.target.value)" @blur="validate()" />
   </InputLayout>
 </template>
