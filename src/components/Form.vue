@@ -1,31 +1,29 @@
 <template>
-  <form ref="form" @submit.prevent="onSubmit">
-    <slot></slot>
+  <form @submit.prevent="onSubmit">
+    <slot />
   </form>
 </template>
 
 <script>
-export default {
+export default{
   props: {
     refs: { type: Object, default: {} },
   },
   methods: {
-    validateForm() {
+    validate() {
       const checks = [];
       for (const r in this.refs) {
-        console.log('r', r);
         try {
-          checks.push(this.refs[r].isValidated());
+          checks.push(this.refs[r].validate());
         } catch { }
       }
       return !checks.includes(false);
     },
     onSubmit(event) {
       event.preventDefault();
-      console.log('coucou');
-      this.validateForm() ? this.$emit("validated") : null;
+      this.validate() ? this.$emit("validated") : null;
     },
-  }
+  },
 };
 </script>
 
