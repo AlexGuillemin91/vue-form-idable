@@ -11,7 +11,7 @@
     </label>
     <!-- Box input -->
     <div>
-      <div class="layout">
+      <div class="vfi-layout">
         <!-- Real input -->
         <slot />
       </div>
@@ -39,16 +39,15 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style>
 /* target the input inside to modify the input */
-  .layout ::v-deep(input) {
-    border: 1px solid black;
-    outline: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-family: inherit;
-    background-color: transparent;
-    border-radius: 5px;
-  }
+.vfi-layout input {
+  border: 1px solid black;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: transparent;
+  border-radius: 5px;
+}
 </style>
